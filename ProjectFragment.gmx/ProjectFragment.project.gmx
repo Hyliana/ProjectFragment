@@ -8,6 +8,7 @@
     <sound>sound\sndArbiterDialogue</sound>
     <sound>sound\sndNextDialogue</sound>
     <sound>sound\sndTitleTemp</sound>
+    <sound>sound\sndMoveChoiceArrow</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\arbiterPrologue</sprite>

@@ -27,8 +27,17 @@
             <kind>1</kind>
             <string>landChosen=false;
      landChosenWither=false;
+          lcwQ1=false;
+          lcwQ2=false;
+          lcwQ3=false;
      landChosenScourge=false;
+          lcwQ1=false;
+          lcsQ2=false;
+          lcsQ3=false;
      landChosenScorch=false;
+          lcfQ1=false;
+          lcfQ2=false;
+          lcfQ3=false;
 </string>
           </argument>
         </arguments>

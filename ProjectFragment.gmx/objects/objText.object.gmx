@@ -272,6 +272,18 @@ if(index&lt;numOfChars)
                 tmpStepDelay = real(string_digits(waitTicksString));
                 index+=(testIndex+1);
             }
+            else if(string_ord_at(lineOfText, index) == ord('m')) // ONLY FOR USE WITH ARBITER! - Changes prologueObject.em_index
+            {
+                debugChar="m";
+                testIndex=1;
+                emString="";
+                while(string_ord_at(lineOfText, index+testIndex) != ord('_')){
+                    emString=(emString+string_char_at(lineOfText, index+testIndex));
+                    testIndex+=1;
+                }
+                prologueObject.em_index = real(string_digits(emString));
+                index+=(testIndex+1);
+            }
             else if(string_ord_at(lineOfText, index) == ord('r'))
             {
                 debugChar="r";
@@ -363,6 +375,7 @@ else if(done &amp;&amp; choiceImpending)
         if(q.curSel&lt;2)    
         {
             q.curSel++;
+            sound_play(sndMoveChoiceArrow);
         }
     }
     if(controlPressed(global.UP))
@@ -370,6 +383,7 @@ else if(done &amp;&amp; choiceImpending)
         if(q.curSel&gt;0)    
         {
             q.curSel--;
+            sound_play(sndMoveChoiceArrow);            
         }
     }
     if(control(global.NEXT_BOX))
@@ -427,20 +441,21 @@ else if(done &amp;&amp; choiceImpending)
         }break;
         case 1:           ////////////////////  Question ID 1 - Wither Options 1 //                    
         {
-            pcFlags.landChosen=true;
             switch(q.curSel)
             {
                 case 0:
-                pcFlags.landChosenWither=true;
-                dialogueGoto=7;
+                pcFlags.lcwQ1=true;
+                dialogueGoto=13;
                 break;
                 
                 case 1:
-                pcFlags.landChosenScourge=true;
+                pcFlags.lcwQ2=true;
+                dialogueGoto=15;
                 break;
                 
                 case 2:
-                pcFlags.landChosenScorch=true;
+                pcFlags.lcwQ3=true;
+                dialogueGoto=17;
                 break;
             }
         }break;
@@ -490,9 +505,9 @@ if(room==roomArbiterWelcome)
         global.questionID=1; //Question ID - "Questions about the WITHER"
         q=instance_create(0,0,objArbiterChoice);
         q.curSel=0;
-        q.choice[0]="Who would choose to live in such a place?";
+        q.choice[0]="Who would choose to live there?";
         q.choice[1]="How do they survive?";
-        q.choice[2]="Why does the Dominion treat this place like a pariah?";
+        q.choice[2]="Why does the Dominion ignore this place?";
         }
     }
 }
