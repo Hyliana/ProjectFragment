@@ -54,12 +54,12 @@ instance_create(0,0,pcFlags);
 
 //Main Dialogue
 dialogue[0]="Scorched.|d60_|n Withered.|d60_|n Scourged.";  emote[0]=EM_NO;
-dialogue[1]="These are the lands of the Dominion.|d15_ Or rather,|d10_ their shattered remnants. Inhospitable fragments of a land that was once aliving legend.";  emote[1]=EM_RIGHT;
-dialogue[2]="Few+ know the reality of this unfortunate circumstance. Those who DO all fight for what was once considered the baseline of biological sustinence.";    emote[2]=EM_SAD;
+dialogue[1]="These are the lands of the Dominion.|d15_ Or rather,|d10_ their shattered remnants. Inhospitable fragments of a land that was once a living legend.";  emote[1]=EM_RIGHT;
+dialogue[2]="Few know the reality of this unfortunate circumstance. Those who DO all fight for what was once considered the baseline of biological sustinence.";    emote[2]=EM_SAD;
 dialogue[3]="Most who have attempted to survive have failed. They share a grave with many more who yet follow them.";     emote[3]=EM_SAD;
 dialogue[4]="You, however|s15_...|r|n Consider yourself fortunate.|d30_|n One of the fortunate few who endures.";         emote[4]=EM_NO;
 dialogue[5]="But, I digress.";        emote[5]=EM_LEFT;
-dialogue[6]="For now, gaze upon the shattered wastelands that The Dominion claims to rule over.|d10_ Learn of their remaining inhabitants.|d10_ Learn of the trials that mankind is subjected to. |Q "; emote[6]=EM_RIGHT;//QUESTION 1
+dialogue[6]="For now, gaze upon the shattered wastelands that The Dominion claims to rule over.|d10_  Learn of their remaining inhabitants.|d10_ Learn of the trials that mankind is subjected to. |Q "; emote[6]=EM_RIGHT;//QUESTION 1
      
 //Wither Dialogue
 dialogue[7]="You seek knowledge of the Wither?|d40_|n See and believe:";  emote[7]=EM_BLANK;
@@ -75,11 +75,11 @@ dialogue[12]="The land has grown inarable,|d15_ making it useless to a governmen
     
     //WITHER      OPTION 2
     dialogue[15]="I am certain that not even those who live within the Wither could answer this question. Though|d20_.|d20_.|d20_."; emote[15]=EM_LEFT;
-    dialogue[16]="Some might say it all stems from courage and perseverance.|d30_ Yet simultaneously,|d10_ others would assert that such a life is not one worth living."; emote[16]=EM_SAD;
+    dialogue[16]="Some might say it all stems from courage and perseverance.|d30_ But at the same time,|d10_ others would assert that such a life is not one worth living."; emote[16]=EM_SAD;
     
     //WITHER      OPTION 3
-    dialogue[17]="Why would it not?|m6_ The governments most effective at controlling its people are those that obscure any hope that exists under its jurisdiction"; emote[17]=EM_CURIOUS;
-    dialogue[18]="The people of the Wither are simply lucky that beauraucrats of the Dominion think it would cost too much to have them all killed."; emote[18]=EM_BLANK;
+    dialogue[17]="Why would it not?|d15_ |m6_ The governments most effective at controlling their people are those who obscure any hope that exists under their rule."; emote[17]=EM_CURIOUS;
+    dialogue[18]="The people of the Wither are simply lucky that politicians of the Dominion think it would cost too much to have them all killed."; emote[18]=EM_BLANK;
     
 global.createBox=true;
 </string>

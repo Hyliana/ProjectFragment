@@ -1,0 +1,9 @@
+arg0=argument0;
+arg1=argument1;
+arg2=argument2;
+arg3=argument3;
+q=instance_create(0,0,objArbiterChoice);
+    q.curSel=0;
+    q.choice[0]=arg1;
+    q.choice[1]=arg2;
+    q.choice[2]=arg3;

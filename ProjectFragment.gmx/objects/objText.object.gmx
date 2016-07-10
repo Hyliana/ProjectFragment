@@ -191,7 +191,14 @@ if(index&lt;numOfChars)
             index++;
             
             //TEXT ACTION ESC CHARS/////////////////////////////////////////////////////////////////////////////////
-            if(string_ord_at(lineOfText, index) == ord('E')) //If the signal is given to end the current textbox...
+            if(string_ord_at(lineOfText, index) == ord('A')) //ARBITER ONLY - Choose where to see next.
+            {
+                done=true;
+                choiceImpending=true;
+                global.
+                index++;
+            }
+            else if(string_ord_at(lineOfText, index) == ord('E')) //If the signal is given to end the current textbox...
             {
                 done=true;
                 choiceImpending=false;
@@ -328,9 +335,9 @@ if(index&lt;numOfChars)
             
             if(testingWidth&gt;=(maxStringWidth))
             {
-                //index++;
                 line[curLine+1]=string_char_at(lineOfText, index);
                 curLine++;
+                index++;
             }
             else{
                 
@@ -497,6 +504,10 @@ if(room==roomArbiterWelcome)
     q.choice[0]="Witness the WITHER";
     q.choice[1]="Behold the SCOURGE";
     q.choice[2]="See the SCORCH";
+    if(pcFlags.landChosenWither)
+    {
+    
+    }
     }
     else
     {
