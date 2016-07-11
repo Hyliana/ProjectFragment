@@ -195,7 +195,9 @@ if(index&lt;numOfChars)
             {
                 done=true;
                 choiceImpending=true;
-                global.
+                global.questionID=0;
+                canFire=false;
+                event_perform(ev_other, ev_user0);
                 index++;
             }
             else if(string_ord_at(lineOfText, index) == ord('E')) //If the signal is given to end the current textbox...
@@ -212,6 +214,10 @@ if(index&lt;numOfChars)
                 canFire=false;
                 event_perform(ev_other, ev_user0);
                 index++;
+            }
+            else if(string_ord_at(lineOfText, index) == ord('X')) //If the signal is given to end the game prematurely...
+            {
+                event_perform(ev_other, ev_user15);
             }
             
             
@@ -302,6 +308,19 @@ if(index&lt;numOfChars)
                 debugChar="w";
                 col=c_white;
                 index++;
+            }
+            
+            else if(string_ord_at(lineOfText, index) == ord('v')) // ONLY FOR USE WITH ARBITER! - Changes prologueObject.em_index
+            {
+                debugChar="v";
+                testIndex=1;
+                emString="";
+                while(string_ord_at(lineOfText, index+testIndex) != ord('_')){
+                    emString=(emString+string_char_at(lineOfText, index+testIndex));
+                    testIndex+=1;
+                }
+                global.speakingPersona = real(string_digits(emString));
+                index+=(testIndex+1);
             }
             escape=false;
         }
@@ -409,6 +428,29 @@ else if(done &amp;&amp; choiceImpending)
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -433,8 +475,16 @@ else if(done &amp;&amp; choiceImpending)
             switch(q.curSel)
             {
                 case 0:
-                pcFlags.landChosenWither=true;
-                dialogueGoto=7;
+                if(!pcFlags.witherFinished)
+                {
+                    pcFlags.landChosenWither=true;
+                    dialogueGoto=7;
+                }
+                else if(pcFlags.witherFinished)
+                {
+                    dialogueGoto=121+global.witherTryCount;
+                    global.witherTryCount++;
+                }
                 break;
                 
                 case 1:
@@ -446,8 +496,11 @@ else if(done &amp;&amp; choiceImpending)
                 break;
             }
         }break;
+        
         case 1:           ////////////////////  Question ID 1 - Wither Options 1 //                    
         {
+            pcFlags.witherFinished=true;
+            
             switch(q.curSel)
             {
                 case 0:
@@ -498,27 +551,20 @@ if(room==roomArbiterWelcome)
 {
     if(!pcFlags.landChosen)
     {
-    global.questionID=0; //Question ID - "What land do you want to see?"
-    q=instance_create(0,0,objArbiterChoice);
-    q.curSel=0;
-    q.choice[0]="Witness the WITHER";
-    q.choice[1]="Behold the SCOURGE";
-    q.choice[2]="See the SCORCH";
-    if(pcFlags.landChosenWither)
-    {
-    
-    }
+        global.questionID=0; //Question ID - "What land do you want to see?"
+        createArbiterQuestion(3,"Witness the WITHER","Behold the SCOURGE","See the SCORCH");
     }
     else
     {
-    if(pcFlags.landChosenWither)
+        if(pcFlags.landChosenWither &amp;&amp; !pcFlags.witherFinished)
         {
-        global.questionID=1; //Question ID - "Questions about the WITHER"
-        q=instance_create(0,0,objArbiterChoice);
-        q.curSel=0;
-        q.choice[0]="Who would choose to live there?";
-        q.choice[1]="How do they survive?";
-        q.choice[2]="Why does the Dominion ignore this place?";
+            global.questionID=1; //Question ID - "Questions about the WITHER"
+            createArbiterQuestion(3,"Who would choose to live there?","How do the people survive?","Why does the Dominion treat this place so poorly?");
+        }
+        else if(pcFlags.landChosenWither &amp;&amp; pcFlags.witherFinished)
+        {
+            global.questionID=0;
+            createArbiterQuestion(3,"Witness the WITHER","Behold the SCOURGE","See the SCORCH");
         }
     }
 }

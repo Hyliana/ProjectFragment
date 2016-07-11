@@ -30,14 +30,17 @@
           lcwQ1=false;
           lcwQ2=false;
           lcwQ3=false;
+          witherFinished=false;
      landChosenScourge=false;
           lcwQ1=false;
           lcsQ2=false;
           lcsQ3=false;
+          scourgeFinished=false;
      landChosenScorch=false;
           lcfQ1=false;
           lcfQ2=false;
           lcfQ3=false;
+          scorchFinished=false;
 </string>
           </argument>
         </arguments>
