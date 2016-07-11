@@ -1,5 +1,5 @@
 workingColor=argument0;
-ratio=0.75;
+ratio=0.65;
 
 r=colour_get_red(workingColor)*ratio;
 g=colour_get_green(workingColor)*ratio;

@@ -191,6 +191,7 @@ if(index&lt;numOfChars)
             index++;
             
             //TEXT ACTION ESC CHARS/////////////////////////////////////////////////////////////////////////////////
+            
             if(string_ord_at(lineOfText, index) == ord('A')) //ARBITER ONLY - Choose where to see next.
             {
                 done=true;
@@ -199,6 +200,13 @@ if(index&lt;numOfChars)
                 canFire=false;
                 event_perform(ev_other, ev_user0);
                 index++;
+            }
+            else if(string_ord_at(lineOfText, index) == ord('1')) // Regardless... Wither
+            {
+                done=true;
+                choiceImpending=false;
+                canFire=false;
+                dialogueGoto=19;
             }
             else if(string_ord_at(lineOfText, index) == ord('E')) //If the signal is given to end the current textbox...
             {
