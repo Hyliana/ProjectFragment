@@ -33,6 +33,7 @@
           witherFinished=false;
      landChosenScourge=false;
           lcwQ1=false;
+               criminals=false;
           lcsQ2=false;
           lcsQ3=false;
           scourgeFinished=false;

@@ -124,7 +124,7 @@ dialogue[22]="Unlike the WITHER, those who live in the SCOURGE are there by forc
      dialogue[30] = "These groups provide an estimate that around 6.72 million — |d30_ one-tenth of the population of the Dominion — |d30_live within the Scourge. |B"; emote[30]=EM_NO;
 
 dialogue[31] = "The Dominion uses the Scourge as a sort of “reeducation camp” for those who stray from its creed. Of course, this wasteland is perfect for such transgressors.";  emote[31]=EM_NO;
-dialogue[32] = "Pestilence, disease and other “Scourges” will wipe them out before anyone has the chance to escape." emote[32]= EM_SMIRK;
+dialogue[32] = "Pestilence, disease and other “Scourges” will wipe them out before anyone has the chance to escape. |A" emote[32]= EM_SMIRK;
      
 global.createBox=true;
 </string>

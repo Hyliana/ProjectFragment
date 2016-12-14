@@ -587,12 +587,41 @@ if(room==roomArbiterWelcome)
     }
     else
     {
-        if(pcFlags.landChosenWither &amp;&amp; !pcFlags.witherFinished)
+        if(pcFlags.witherFinished &amp;&amp; pcFlags.scorchFinished &amp;&amp; pcFlags.scourgeFinished)
+        {
+            //Insert "Move On" Message//
+        }
+        else if(pcFlags.landChosenWither &amp;&amp; !pcFlags.witherFinished)
         {
             global.questionID=1; //Question ID - "Questions about the WITHER"
             createArbiterQuestion(3,"Who would choose to live there?","How do the people survive?","Why does the Dominion treat this place so poorly?");
         }
         else if(pcFlags.landChosenWither &amp;&amp; pcFlags.witherFinished)
+        {
+            global.questionID=0;
+            createArbiterQuestion(3,"Witness the WITHER","Behold the SCOURGE","See the SCORCH");
+        }
+        else if(pcFlags.landChosenScourge &amp;&amp; !pcFlags.scourgeFinished &amp;&amp; !pcFlags.criminals)
+        {
+            global.questionID=2;
+            createArbiterQuestion(3,"Criminals?","Is this the Dominion's doing?","How many live there?");
+        }
+        else if(pcFlags.landChosenScourge &amp;&amp; !pcFlags.scourgeFinished &amp;&amp; pcFlags.criminals)
+        {
+            global.questionID=3;
+            createArbiterQuestion(3,"By moral standards.","By the law.","I'm not sure.");
+        }
+        else if(pcFlags.landChosenScourge &amp;&amp; pcFlags.scourgeFinished)
+        {
+            global.questionID=0;
+            createArbiterQuestion(3,"Witness the WITHER","Behold the SCOURGE","See the SCORCH");
+        }
+        else if(pcFlags.landChosenScorch &amp;&amp; !pcFlags.scorchFinished)
+        {
+            global.questionID=4;
+            createArbiterQuestion(3,"Why do you say that??","Is survival even possible in the Dominion?","What do people really think??");
+        }
+        else if(pcFlags.landChosenScorch  &amp;&amp; pcFlags.scorchFinished)
         {
             global.questionID=0;
             createArbiterQuestion(3,"Witness the WITHER","Behold the SCOURGE","See the SCORCH");
