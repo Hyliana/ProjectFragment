@@ -31,7 +31,9 @@ global.createBox=false;
 //INIT NUMERIC VALUES
 global.dBox=0;
 global.curview=0;
-global.speakingPersona=0;
+global.speakingPersona=1;
+
+global.witherTryCount=0;
 
 //INIT STRINGS
 global.gameVersion = "0.0.1 - Pre-Alpha"
@@ -47,7 +49,8 @@ global.PAUSE = vk_enter;
 global.TOGGLE_MINIMAP = ord("A");
 
 //INIT SOUND-NUMBER ASSIGNMENT CONSTANTS
-global.ARBITER = 0;
+global.VOICE_NONE = 0;
+global.VOICE_ARBITER = 1;
 
 room_goto_next();
 </string>

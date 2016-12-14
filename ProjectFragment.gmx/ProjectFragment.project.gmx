@@ -17,6 +17,7 @@
     <sprite>sprites\sprTitleLogoTemp</sprite>
     <sprite>sprites\eyes</sprite>
     <sprite>sprites\sprChoiceArrow</sprite>
+    <sprite>sprites\sprTempPlayer</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -26,6 +27,8 @@
     <script>scripts\control.gml</script>
     <script>scripts\controlPressed.gml</script>
     <script>scripts\playDialogSound.gml</script>
+    <script>scripts\createArbiterQuestion.gml</script>
+    <script>scripts\darker.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\textbox</font>

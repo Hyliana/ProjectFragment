@@ -34,6 +34,9 @@ EM_SAD=3;
 EM_RAGE=4;
 EM_CURIOUS=5;
 EM_BLANK=6;
+EM_IMPLICATION=7;
+EM_GONE=8;
+EM_SMIRK=9;
 
 em_index=0;
 
@@ -45,7 +48,6 @@ initDist=distance_to_point(64, (room_height/2)+32)
 path_start(pathArbiter,0.25,path_action_restart,false);
 
 global.dBox=0;
-
 delay=irandom(240);
 
 move=false;
@@ -54,12 +56,12 @@ instance_create(0,0,pcFlags);
 
 //Main Dialogue
 dialogue[0]="Scorched.|d60_|n Withered.|d60_|n Scourged.";  emote[0]=EM_NO;
-dialogue[1]="These are the lands of the Dominion.|d15_ Or rather,|d10_ their shattered remnants. Inhospitable fragments of a land that was once aliving legend.";  emote[1]=EM_RIGHT;
-dialogue[2]="Few+ know the reality of this unfortunate circumstance. Those who DO all fight for what was once considered the baseline of biological sustinence.";    emote[2]=EM_SAD;
+dialogue[1]="These are the lands of the Dominion.|d15_ Or rather,|d10_ their shattered remnants. Inhospitable fragments of a land that was once a living legend.";  emote[1]=EM_RIGHT;
+dialogue[2]="Few know the reality of this unfortunate circumstance. Those who DO all fight for what was once considered the baseline of biological sustinence.";    emote[2]=EM_SAD;
 dialogue[3]="Most who have attempted to survive have failed. They share a grave with many more who yet follow them.";     emote[3]=EM_SAD;
 dialogue[4]="You, however|s15_...|r|n Consider yourself fortunate.|d30_|n One of the fortunate few who endures.";         emote[4]=EM_NO;
 dialogue[5]="But, I digress.";        emote[5]=EM_LEFT;
-dialogue[6]="For now, gaze upon the shattered wastelands that The Dominion claims to rule over.|d10_ Learn of their remaining inhabitants.|d10_ Learn of the trials that mankind is subjected to. |Q "; emote[6]=EM_RIGHT;//QUESTION 1
+dialogue[6]="For now, gaze upon the shattered wastelands that The Dominion claims to rule over.|d10_ Learn of their remaining inhabitants. |d10_ Learn of the trials that mankind is subjected to. |Q "; emote[6]=EM_RIGHT;//QUESTION 1
      
 //Wither Dialogue
 dialogue[7]="You seek knowledge of the Wither?|d40_|n See and believe:";  emote[7]=EM_BLANK;
@@ -68,19 +70,62 @@ dialogue[9]="Either way, the man who watched over the fire and the mother of unk
 dialogue[10]="Besides|d10_.|d10_.|d10_."; emote[10]=EM_NO;
 dialogue[11]="The Dominion pays no mind to the few capable of surviving this gargantuan void of a continent.";  emote[11]=EM_RAGE;
 dialogue[12]="The land has grown inarable,|d15_ making it useless to a government solely seeking economics and growth. |Q "; emote[12]=EM_SAD;
+                  dialogue[121]="You've already seen the WITHER haven't you? |Q"; emote[121]=EM_NO;
+                  dialogue[122]="Um... You've already seen this. |Q"; emote[122]=EM_CURIOUS;
+                  dialogue[123]="You're persistent, arent you? |Q"; emote[123]=EM_BLANK;
+                  dialogue[124]="I know what you're doing. It won't work. |Q";   emote[124]= EM_BLANK;
+                  dialogue[125]="On top of that, it seems to me that you know what you're doing too. |Q";    emote[125]=EM_IMPLICATION;
+                  dialogue[126]="Look, you're starting to bother me. There's nothing to see here. |Q";     emote[126]=EM_IMPLICATION;
+                  dialogue[127]=".|d20_.|d20_.|d45_ If you're THAT set on manipulating your world |d20_. |d20_. |d20_. |Q";     emote[127]=EM_NO;
+                  dialogue[128]="|v0_ |s20_ Don't say I didn't warn you. |X";  emote[128]=EM_GONE;
 
     //WITHER      OPTION 1
     dialogue[13]="Do not treat it as if those who live in the Wither choose to do so, like its some sort of challenge. The desolate environment is no game."; emote[13]=EM_RAGE;
-    dialogue[14]="The people in this area are simply hard pressed to find the things one needs to survive. Facing the challenge of providing for the needs of a group requires more determination than most can muster. "; emote[14]=EM_RAGE;
+    dialogue[14]="The people in this area are simply hard pressed to find the things one needs to survive. Facing the challenge of providing for the needs of a group requires more determination than most can muster. |B"; emote[14]=EM_RAGE;
     
     //WITHER      OPTION 2
     dialogue[15]="I am certain that not even those who live within the Wither could answer this question. Though|d20_.|d20_.|d20_."; emote[15]=EM_LEFT;
-    dialogue[16]="Some might say it all stems from courage and perseverance.|d30_ Yet simultaneously,|d10_ others would assert that such a life is not one worth living."; emote[16]=EM_SAD;
+    dialogue[16]="Some might say it all stems from courage and perseverance.|d30_ But at the same time,|d10_ others would assert that such a life is not one worth living. |B"; emote[16]=EM_SAD;
     
     //WITHER      OPTION 3
-    dialogue[17]="Why would it not?|m6_ The governments most effective at controlling its people are those that obscure any hope that exists under its jurisdiction"; emote[17]=EM_CURIOUS;
-    dialogue[18]="The people of the Wither are simply lucky that beauraucrats of the Dominion think it would cost too much to have them all killed."; emote[18]=EM_BLANK;
-    
+    dialogue[17]="Why would it not?|d15_ |m6_ The governments most effective at controlling their people are those who obscure any hope that exists under their rule."; emote[17]=EM_CURIOUS;
+    dialogue[18]="The people of the Wither are simply lucky that politicians of the Dominion think it would cost too much to have them all killed. |B"; emote[18]=EM_BLANK;
+       
+dialogue[19]="Regardless, the point is that those who live in the Wither hunt and gather.|d10_ Even though it seems like there's nothing to sustain life, there's something to be said for the fear of Thantos keeping these people alive. |A";      emote[19]=EM_NO;
+
+
+//Scourge Dialogue
+dialogue[20]="If the Dominion is the prison guard that locks you away and throws away the key, the Scourge is the cell that eats away at your poor, innocent mind and body and soul."; emote[20]=EM_SMIRK;
+dialogue[21]="Few have entered its deadly maw and lived to speak of it."; emote[21]=EM_IMPLICATION;
+dialogue[22]="Unlike the WITHER, those who live in the SCOURGE are there by force, kept under the iron fist of an unforgiving Dominion. |Q"; emote[22]=EM_IMPLICATION;
+                  dialogue[221]="You've already seen the SCOURGE you know. |Q"; emote[221]=EM_NO;
+                  dialogue[222]="You've already seen this. |Q"; emote[222]=EM_CURIOUS;
+                  dialogue[223]="What are you looking to gain by asking more? |Q"; emote[223]=EM_CURIOUS;
+                  dialogue[224]="You're not getting anywhere you know. |Q";   emote[224]= EM_BLANK;
+                  dialogue[225]="Why? |Q";    emote[225]=EM_CURIOUS;
+                  dialogue[226]="Why...? |Q";     emote[226]=EM_IMPLICATION;
+                  dialogue[227]=".|d20_.|d20_.|d45_ I'm getting tired of this. |d20_. |d20_. |d20_. |Q";     emote[227]=EM_BLANK;
+                  dialogue[228]=".|d20_.|d20_.|d45_ Are you really that set on changing? |d20_. |d20_. |d20_. |Q";     emote[228]=EM_NO;
+                  dialogue[229]="|v0_ |s10_ Okay, I give up. You brought this on yourself. |X";  emote[229]=EM_GONE;
+
+
+     //SCOURGE       OPTION 1
+     dialogue[23] = "By what standards do you define 'Criminal'? |Q";       emote[23]=EM_CURIOUS;  
+     dialogue[24] = ".|d20_.|d20_.";   emote[24]=EM_IMPLICATION;
+     dialogue[25] = "No matter. This is irrelevant to pace of the ticking of the universal clockwork. Only the Dominion decides the legality of your actions. Or, rather, whether you’ve committed one at all. |B"; emote[25] = EM_RIGHT;
+     
+     //SCOURGE       OPTION 2
+     dialogue[26] = "In short,|d10_ yes. |B";         emote[26]=EM_NO;
+     
+     //SCOURGE       OPTION 3
+     dialogue[27] = "None know for certain.|m2_ The deaths and admittances of those who have the misfortune call the Scourge home change too often to be accurately measured."; emote[27]=EM_LEFT;;
+     dialogue[28] = "The Dominion quantifies the population at around 15,000."; emote[28]=EM_NO;
+     dialogue[29] = "On the contrary, various counterintelligence groups refute these numbers. At over 700 square miles, they argue that the vast expanse of land MUST hold more."; emote[29]=EM_LEFT;
+     dialogue[30] = "These groups provide an estimate that around 6.72 million — |d30_ one-tenth of the population of the Dominion — |d30_live within the Scourge. |B"; emote[30]=EM_NO;
+
+dialogue[31] = "The Dominion uses the Scourge as a sort of “reeducation camp” for those who stray from its creed. Of course, this wasteland is perfect for such transgressors.";  emote[31]=EM_NO;
+dialogue[32] = "Pestilence, disease and other “Scourges” will wipe them out before anyone has the chance to escape. |A" emote[32]= EM_SMIRK;
+     
 global.createBox=true;
 </string>
           </argument>
@@ -106,8 +151,9 @@ global.createBox=true;
             <kind>1</kind>
             <string>if(global.createBox)
 {
-    if(global.dBox==6){
-    move=true;
+    if(global.dBox==6)
+    {
+        move=true;
     }
     textObject[global.dBox]= instance_create(0,0, objText);
     textObject[global.dBox].lineOfText=dialogue[global.dBox]+" |E";
@@ -147,8 +193,8 @@ if(move)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,y,2,2,0,c_white,1);
-draw_sprite_ext(eyes,em_index,x-8,y+4,2,2,0,c_white,0.75);
+            <string>draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,1);
+draw_sprite_ext(eyes,em_index,x-8,y+4,1,1,0,c_white,0.75);
 </string>
           </argument>
         </arguments>
